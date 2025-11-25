@@ -26,7 +26,7 @@ export default function Contact() {
           <p>
             Tell us about your property, the type of cleaning or restoration you
             need, and how often you&apos;d like service. We&apos;ll follow up
-            with a customized quote for your space in Atlanta or Dallas.
+            with a customized quote for your space in Atlanta, Dallas, or Volusia County, FL & Surrounding Areas.
           </p>
 
           <div>
@@ -35,6 +35,7 @@ export default function Contact() {
             </h3>
             <p>Atlanta: (770) 569-3502</p>
             <p>Dallas: (469) 630-1609</p>
+            <p>Volusia County, FL &amp; Surrounding Areas: (XXX) XXX-XXXX</p>
           </div>
 
           <div>

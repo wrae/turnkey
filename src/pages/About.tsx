@@ -35,7 +35,7 @@ export default function About() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <Stat label="Metro Areas Served" value="Atlanta &amp; Dallas" />
+        <Stat label="Metro Areas Served" value="Atlanta, Dallas &amp; Volusia County, FL &amp; Surrounding Areas" />
         <Stat label="Service Types" value="Cleaning &amp; Restoration" />
         <Stat label="Scheduling" value="Day, Evening &amp; Emergency" />
       </div>
