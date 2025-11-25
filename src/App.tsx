@@ -5,6 +5,10 @@ const NAVY = "#0b2942";
 const GOLD = "#f57c2c";
 
 import logoUrl from "./assets/signature-logo.png";
+import heroHome from "./assets/hero-cleaning-home.png";
+import heroOffice from "./assets/hero-cleaning-office.png";
+import heroTeam from "./assets/hero-cleaning-team.png";
+import heroRestoration from "./assets/hero-cleaning-restoration.png";
 import rawLogoUrl from "./assets/signature-logo.png";
 
 import Home from "./pages/Home";
@@ -22,18 +26,10 @@ export function useTransparentLogo(_targetHex?: string, _tolerance?: number) {
    Constants & Types
    ========================= */
 const IMAGES = [
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1587017539504-67cfbddac569?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=1600&auto=format&fit=crop",
-];
-
-const NAV = [
-  { to: "/", key: "home" },
-  { to: "/services", key: "services" },
-  { to: "/pricing", key: "pricing" },
-  { to: "/about", key: "about" },
-  { to: "/contact", key: "contact" },
+  heroHome,
+  heroOffice,
+  heroTeam,
+  heroRestoration,
 ] as const;
 
 type Lang = "en" | "es";
@@ -46,12 +42,12 @@ type Lang = "en" | "es";
 const TRANSLATIONS = {
   en: {
     nav: { home: "Home", services: "Services", pricing: "Pricing", about: "About", contact: "Contact Us" },
-    hero: { title: "MAXX Cleaning", subtitle: "Sparkling homes and spotless offices—done right, on time, every time.", cta: "Get a Free Quote" },
+    hero: { title: "Signature Turnkey Solutions Cleaning", subtitle: "Sparkling homes and spotless offices—done right, on time, every time.", cta: "Get a Free Quote" },
     home: {
       headline: "Relax. We’ll handle the mess.",
       features: ["Fully insured & bonded","Eco-friendly options","Flexible scheduling","Satisfaction guaranteed"],
       packagesHeading: "Top-Rated Packages",
-      packagesText: "Try our MAXX Basic for busy households, or go deeper with MAXX Deep to reset neglected spaces. Offices love our MAXX Pro after-hours service.",
+      packagesText: "Try our Signature Turnkey Solutions Basic for busy households, or go deeper with Signature Turnkey Solutions Deep to reset neglected spaces. Offices love our Signature Turnkey Solutions Pro after-hours service.",
       viewPricing: "View Pricing",
       areasHeading: "Areas We Serve",
       areasText: "Greater metro area and surrounding suburbs. Same-week availability for most ZIP codes.",
@@ -88,9 +84,9 @@ const TRANSLATIONS = {
       heading: "Pricing",
       note: "Transparent, simple pricing. No surprises—just reliable service. Homes vary; deep-clean pricing may adjust based on size and condition.",
       plans: {
-        basic: "MAXX Basic",
-        deep: "MAXX Deep",
-        pro: "MAXX Pro (Office)",
+        basic: "Signature Turnkey Solutions Basic",
+        deep: "Signature Turnkey Solutions Deep",
+        pro: "Signature Turnkey Solutions Pro (Office)",
         cadenceVisit: "per visit",
         cadenceMonthly: "monthly",
         features: {
@@ -102,8 +98,8 @@ const TRANSLATIONS = {
       },
     },
     about: {
-      heading: "About MAXX",
-      body: "We started MAXX to make professional cleaning straightforward and trustworthy—trained staff, clear communication, and meticulous results.",
+      heading: "About Signature Turnkey Solutions",
+      body: "We started Signature Turnkey Solutions to make professional cleaning straightforward and trustworthy—trained staff, clear communication, and meticulous results.",
       stats: [
         { k: "5★ Reviews", v: "+1,500" },
         { k: "Homes & Offices", v: "+10,000 cleaned" },
@@ -124,18 +120,18 @@ const TRANSLATIONS = {
       otherLabel: "Other (25–50 chars)",
       submit: "Request Quote",
       thanks: "Thanks! Your request was sent. We'll reach out shortly.",
-      privacy: "By submitting this form you agree to be contacted by MAXX about your request. We will never sell your information.",
+      privacy: "By submitting this form you agree to be contacted by Signature Turnkey Solutions about your request. We will never sell your information.",
     },
     footer: { cta: "Get a Free Quote" },
   },
   es: {
     nav: { home: "Inicio", services: "Servicios", pricing: "Precios", about: "Nosotros", contact: "Contáctenos" },
-    hero: { title: "MAXX Limpieza", subtitle: "Hogares y oficinas impecables—bien hecho, a tiempo, siempre.", cta: "Pide una cotización" },
+    hero: { title: "Signature Turnkey Solutions Limpieza", subtitle: "Hogares y oficinas impecables—bien hecho, a tiempo, siempre.", cta: "Pide una cotización" },
     home: {
       headline: "Relájate. Nosotros nos encargamos del desorden.",
       features: ["Asegurados y con fianza","Opciones ecológicas","Horarios flexibles","Satisfacción garantizada"],
       packagesHeading: "Paquetes más valorados",
-      packagesText: "Prueba MAXX Básico para hogares ocupados, o MAXX Profundo para una limpieza completa. Las oficinas prefieren MAXX Pro después del horario laboral.",
+      packagesText: "Prueba Signature Turnkey Solutions Básico para hogares ocupados, o Signature Turnkey Solutions Profundo para una limpieza completa. Las oficinas prefieren Signature Turnkey Solutions Pro después del horario laboral.",
       viewPricing: "Ver Precios",
       areasHeading: "Zonas de Servicio",
       areasText: "Área metropolitana y suburbios. Disponibilidad la misma semana para la mayoría de los códigos postales.",
@@ -172,9 +168,9 @@ const TRANSLATIONS = {
       heading: "Precios",
       note: "Precios simples y transparentes. Sin sorpresas—solo servicio confiable. El precio de limpieza profunda puede variar según el tamaño y condición.",
       plans: {
-        basic: "MAXX Básico",
-        deep: "MAXX Profundo",
-        pro: "MAXX Pro (Oficinas)",
+        basic: "Signature Turnkey Solutions Básico",
+        deep: "Signature Turnkey Solutions Profundo",
+        pro: "Signature Turnkey Solutions Pro (Oficinas)",
         cadenceVisit: "por visita",
         cadenceMonthly: "mensual",
         features: {
@@ -186,8 +182,8 @@ const TRANSLATIONS = {
       },
     },
     about: {
-      heading: "Sobre MAXX",
-      body: "Creamos MAXX para ofrecer limpieza profesional clara y confiable—personal capacitado, comunicación transparente y resultados meticulosos.",
+      heading: "Sobre Signature Turnkey Solutions",
+      body: "Creamos Signature Turnkey Solutions para ofrecer limpieza profesional clara y confiable—personal capacitado, comunicación transparente y resultados meticulosos.",
       stats: [
         { k: "Reseñas 5★", v: "+1,500" },
         { k: "Hogares y Oficinas", v: "+10,000 limpiados" },
@@ -208,7 +204,7 @@ const TRANSLATIONS = {
       otherLabel: "Otro (25–50 caracteres)",
       submit: "Solicitar cotización",
       thanks: "¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.",
-      privacy: "Al enviar este formulario aceptas que MAXX te contacte sobre tu solicitud. Nunca venderemos tu información.",
+      privacy: "Al enviar este formulario aceptas que Signature Turnkey Solutions te contacte sobre tu solicitud. Nunca venderemos tu información.",
     },
     footer: { cta: "Pide una cotización" },
   },
@@ -449,7 +445,7 @@ function Layout(
       <footer className="mt-12 border-t" style={{background:"#0C2C3E"}}>
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row">
           
-          <p className="text-sm" style={{color:"#DDE6EC"}}>© {new Date().getFullYear()} MAXX Cleaning. All rights reserved.</p>
+          <p className="text-sm" style={{color:"#DDE6EC"}}>© {new Date().getFullYear()} Signature Turnkey Solutions Cleaning. All rights reserved.</p>
           <Link to="/contact" className="text-sm font-medium hover:underline" style={{color:"#D5B67A"}}>{t("footer.cta")}</Link>
         </div>
       </footer>
