@@ -5,6 +5,10 @@ const NAVY = "#0b2942";
 const GOLD = "#f57c2c";
 
 import logoUrl from "./assets/signature-logo.png";
+import heroHome from "./assets/hero-cleaning-home.png";
+import heroOffice from "./assets/hero-cleaning-office.png";
+import heroTeam from "./assets/hero-cleaning-team.png";
+import heroRestoration from "./assets/hero-cleaning-restoration.png";
 import rawLogoUrl from "./assets/signature-logo.png";
 
 import Home from "./pages/Home";
@@ -22,18 +26,10 @@ export function useTransparentLogo(_targetHex?: string, _tolerance?: number) {
    Constants & Types
    ========================= */
 const IMAGES = [
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1587017539504-67cfbddac569?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=1600&auto=format&fit=crop",
-];
-
-const NAV = [
-  { to: "/", key: "home" },
-  { to: "/services", key: "services" },
-  { to: "/pricing", key: "pricing" },
-  { to: "/about", key: "about" },
-  { to: "/contact", key: "contact" },
+  heroHome,
+  heroOffice,
+  heroTeam,
+  heroRestoration,
 ] as const;
 
 type Lang = "en" | "es";
