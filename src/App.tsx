@@ -269,9 +269,8 @@ function HeaderCarousel(
   }
 ) {
   const [index, setIndex] = useCarousel(IMAGES.length, 5000);
-  const heroLogo = useTransparentLogo();
   return (
-    <div className="relative h-64 sm:h-[40vh] md:h-[48vh] min-h-[260px] w-full overflow-hidden">
+    <div className="relative h-52 sm:h-[30vh] md:h-[36vh] min-h-[220px] w-full overflow-hidden">
       {IMAGES.map((src, i) => (
         <img
           key={src}
@@ -304,12 +303,7 @@ function HeaderCarousel(
         </button>
       </div>
       {/* top-left hero logo (transparent) */}
-      <div className="absolute left-[-6px] top-[-6px] md:left-[8px] md:top-[-8px] z-40 pointer-events-none rounded-xl bg-white/0 p-1.5 md:p-2 ring-1 ring-black/10 shadow-sm" style={{ transform: "translate(-26px, -14px)", clipPath: "inset(8px 0 0 20px)" }}>
-        <img src={heroLogo || (rawLogoUrl as string)} alt="Signature Turnkey Solutions logo" className="h-40 w-auto sm:h-48 md:h-60 drop-shadow-[0_0_14px_rgba(255,255,255,0.98)]" />
-      </div>
-
-
-      <div className="absolute inset-x-0 bottom-6 sm:bottom-8 mx-auto max-w-6xl px-4 text-white">
+            <div className="absolute inset-x-0 bottom-6 sm:bottom-8 mx-auto max-w-6xl px-4 text-white">
         <div className="flex flex-col items-start gap-2"><p className="max-w-xl text-base sm:text-lg md:text-xl opacity-90">{t("hero.subtitle")}</p>
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-2xl bg-white/95 px-5 py-3 text-gray-900 shadow hover:bg-white">
             {t("hero.cta")} →
@@ -379,30 +373,36 @@ function Navbar(
   { lang, onToggleLang, t }: { lang: Lang; onToggleLang: () => void; t: ReturnType<typeof tFactory> }
 ) {
   return (
-    <nav className="sticky top-0 z-30 h-0 md:h-auto bg-transparent md:bg-[#0C2C3E] border-0" aria-label="Main">
-      <div className="mx-auto hidden md:flex max-w-6xl items-center justify-center px-4 py-2">
-        
-        {/* desktop menu */}
-        <ul className="hidden md:flex gap-6 justify-center">
+    <>
+      {/* Logo bar at very top */}
+      <div className="bg-white flex justify-center py-1">
+        <img
+          src={logoUrl}
+          alt="Signature Turnkey Solutions"
+          className="h-28 w-auto"
+        />
+      </div>
+
+      {/* Grey nav bar above carousel */}
+      <nav className="bg-[#4b5563] h-16 flex items-center justify-center shadow-md" aria-label="Main">
+        <ul className="hidden md:flex gap-8 text-white text-base font-semibold">
           {NAV.map((n) => (
             <li key={n.to}>
               <NavLink
                 to={n.to}
-                className={({ isActive }) => (
+                className={({ isActive }) =>
                   isActive
-                    ? "rounded-xl px-3 py-2 text-sm font-semibold bg-amber-400 text-black ring-2 ring-white/40 shadow-sm"
-                    : "rounded-xl px-3 py-2 text-sm font-medium text-gray-200 hover:text-white"
-                )}
+                    ? "text-orange-300"
+                    : "hover:text-orange-200"
+                }
               >
                 {t(`nav.${n.key}`)}
               </NavLink>
             </li>
           ))}
         </ul>
-        {/* No duplicate language button here; header button is the single source of truth */}
-        <div className="hidden md:block" aria-hidden />
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 
@@ -422,16 +422,32 @@ function ScrollToMain() {
 }
 
 function Layout(
-  { children, t, lang, setLang }: { children: React.ReactNode; t: ReturnType<typeof tFactory>; lang: Lang; setLang: (l: Lang) => void; }
+  { children, t, lang, setLang }: {
+    children: React.ReactNode;
+    t: ReturnType<typeof tFactory>;
+    lang: Lang;
+    setLang: (l: Lang) => void;
+  }
 ) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const transLogo = useTransparentLogo(NAVY, 24);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:shadow">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:shadow"
+      >
         Skip to content
       </a>
+
+      {/* Top logo + nav */}
+      <Navbar
+        lang={lang}
+        onToggleLang={() => setLang(lang === "en" ? "es" : "en")}
+        t={t}
+      />
+
+      {/* Carousel below nav */}
       <HeaderCarousel
         t={t}
         lang={lang}
@@ -440,25 +456,47 @@ function Layout(
         setMobileOpen={setMobileOpen}
       />
 
-      <Navbar lang={lang} onToggleLang={() => setLang(lang === "en" ? "es" : "en")} t={t} />
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} t={t} />
+      {/* Mobile menu overlay */}
+      <MobileMenu
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        t={t}
+      />
 
-      <div className="mx-auto max-w-6xl px-4 -mt-4"><ScrollToMain /></div>
-      <div className="contents">{children}</div>
+      <div className="mx-auto max-w-6xl px-4 -mt-4">
+        <ScrollToMain />
+      </div>
 
-      <footer className="mt-12 border-t" style={{background:"#0C2C3E"}}>
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row">
-          
-          <p className="text-sm" style={{color:"#DDE6EC"}}>© {new Date().getFullYear()} Signature Turnkey Solutions Cleaning. All rights reserved.</p>
-          <Link to="/contact" className="text-sm font-medium hover:underline" style={{color:"#D5B67A"}}>{t("footer.cta")}</Link>
+      <main id="main" className="mx-auto max-w-6xl px-4">
+        {children}
+      </main>
+
+      <footer className="mt-12 border-t" style={{ background: "#0C2C3E" }}>
+        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-200 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="font-semibold text-white">
+              Signature Turnkey Solutions
+            </div>
+            <div className="mt-1 text-slate-300">
+              {t("footer.tagline")}
+            </div>
+          </div>
+          <div className="flex flex-col items-start gap-1 md:items-end">
+            <div>
+              {t("footer.phoneTitle")}: (770) 569-3502 Atlanta • (469) 630-1609 Dallas
+            </div>
+            <div>
+              {t("footer.emailTitle")}: info@signatureATL.com
+            </div>
+            <div>
+              {t("footer.locations")}: Atlanta, GA • Dallas, TX • Volusia County, FL &amp; surrounding areas
+            </div>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
-
-
-
 /* =========================
    App
    ========================= */
