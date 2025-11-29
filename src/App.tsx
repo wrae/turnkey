@@ -384,10 +384,10 @@ function Navbar(
       </div>
 
       {/* Grey nav bar above carousel */}
-      <nav className="bg-[#4b5563] h-16 flex items-center justify-center shadow-md" aria-label="Main">
-        <ul className="hidden md:flex gap-8 text-white text-base font-semibold">
+      <nav className="bg-gray-300 h-16 flex items-center justify-center shadow-xl drop-shadow-lg" aria-label="Main">
+        <ul className="hidden md:flex gap-8 text-gray-900 text-base font-semibold">
           {NAV.map((n) => (
-            <li key={n.to}>
+            <li key={n.to} className="border-r border-gray-500 pr-4 last:border-r-0 last:pr-0">
               <NavLink
                 to={n.to}
                 className={({ isActive }) =>
@@ -474,7 +474,7 @@ function Layout(
       <footer className="mt-12 border-t" style={{ background: "#0C2C3E" }}>
         <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-200 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="font-semibold text-white">
+            <div className="font-semibold text-gray-900">
               Signature Turnkey Solutions
             </div>
             <div className="mt-1 text-slate-300">
