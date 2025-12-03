@@ -384,16 +384,23 @@ function Navbar(
       </div>
 
       {/* Grey nav bar above carousel */}
-      <nav className="bg-gray-300 h-16 flex items-center justify-center shadow-xl drop-shadow-lg" aria-label="Main">
-        <ul className="hidden md:flex gap-8 text-gray-900 text-base font-semibold">
+      <nav
+        className="hidden md:flex bg-gray-300 h-16 items-stretch justify-center shadow-xl"
+        aria-label="Main"
+      >
+        <ul className="flex h-full text-gray-900 text-base font-semibold">
           {NAV.map((n) => (
-            <li key={n.to} className="border-r border-gray-500 pr-4 last:border-r-0 last:pr-0">
+            <li
+              key={n.to}
+              className="flex h-full items-stretch mx-1 shadow-md hover:bg-gray-200 transition-colors"
+            >
               <NavLink
                 to={n.to}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-orange-300"
-                    : "hover:text-orange-200"
+                  [
+                    "flex h-full items-center px-6",
+                    isActive ? "text-orange-400" : "hover:text-orange-300",
+                  ].join(" ")
                 }
               >
                 {t(`nav.${n.key}`)}
@@ -405,9 +412,6 @@ function Navbar(
     </>
   );
 }
-
-
-
 /* =========================
    Layout
    ========================= */
