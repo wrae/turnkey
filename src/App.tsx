@@ -6,6 +6,15 @@ const GOLD = "#f57c2c";
 
 import logoUrl from "./assets/signature-logo.png";
 import rawLogoUrl from "./assets/signature-logo.png";
+import hero1 from "./assets/hero1.jpg";
+import hero2 from "./assets/hero2.jpg";
+import hero3 from "./assets/hero3.jpg";
+import hero4 from "./assets/hero4.jpg";
+import hero5 from "./assets/hero5.jpg";
+import hero6 from "./assets/hero6.jpg";
+import hero7 from "./assets/hero7.jpg";
+import hero8 from "./assets/hero8.jpg";
+import hero9 from "./assets/hero9.jpg";
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -22,10 +31,15 @@ export function useTransparentLogo(_targetHex?: string, _tolerance?: number) {
    Constants & Types
    ========================= */
 const IMAGES = [
-  "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1587017539504-67cfbddac569?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=1600&auto=format&fit=crop",
+  hero1,
+  hero2,
+  hero3,
+  hero4,
+  hero5,
+  hero6,
+  hero7,
+  hero8,
+  hero9,
 ];
 
 const NAV = [
@@ -384,23 +398,16 @@ function Navbar(
       </div>
 
       {/* Grey nav bar above carousel */}
-      <nav
-        className="hidden md:flex bg-gray-300 h-16 items-stretch justify-center shadow-xl"
-        aria-label="Main"
-      >
-        <ul className="flex h-full text-gray-900 text-base font-semibold">
+      <nav className="hidden md:flex bg-gray-300 h-16 items-center justify-center shadow-xl" aria-label="Main">
+        <ul className="hidden md:flex gap-8 text-gray-900 text-base font-semibold">
           {NAV.map((n) => (
-            <li
-              key={n.to}
-              className="flex h-full items-stretch mx-1 shadow-md hover:bg-gray-200 transition-colors"
-            >
+            <li key={n.to} className="bg-gray-200 mx-1 px-4 py-1 rounded-md shadow-sm hover:bg-gray-300 transition-colors">
               <NavLink
                 to={n.to}
                 className={({ isActive }) =>
-                  [
-                    "flex h-full items-center px-6",
-                    isActive ? "text-orange-400" : "hover:text-orange-300",
-                  ].join(" ")
+                  isActive
+                    ? "text-orange-300"
+                    : "hover:text-orange-200"
                 }
               >
                 {t(`nav.${n.key}`)}
@@ -412,6 +419,9 @@ function Navbar(
     </>
   );
 }
+
+
+
 /* =========================
    Layout
    ========================= */
